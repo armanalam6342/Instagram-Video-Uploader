@@ -1,14 +1,5 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[32]:
-
-
 import pendulum
 print(f"Execution started at {pendulum.now().to_datetime_string()}")
-
-
-# In[14]:
 
 
 import argparse
@@ -19,8 +10,6 @@ import requests
 import sys
 sys.path.insert(1, '/home/ubuntu/')
 
-
-# In[15]:
 
 
 def upload_video(video_url,access_token,ig_user_id,caption):
@@ -36,8 +25,6 @@ def upload_video(video_url,access_token,ig_user_id,caption):
     return(result)
 
 
-# In[16]:
-
 
 def upload_video_to_instagram(creation_id,access_token, instagram_account_id):
     # Step 2: Publish the video using the container
@@ -51,8 +38,6 @@ def upload_video_to_instagram(creation_id,access_token, instagram_account_id):
     return publish_response
 
 
-# In[17]:
-
 
 def upload_file_to_0x0st(file_path):
     with open(file_path, 'rb') as f:
@@ -63,46 +48,12 @@ def upload_file_to_0x0st(file_path):
         raise Exception("Failed to upload file")
 
 
-# In[18]:
 
-
-# import os
-# import random
-
-# def delete_file(file_path):
-#     try:
-#         os.remove(file_path)
-#         print(f"File '{file_path}' deleted successfully.")
-#     except OSError as e:
-#         print(f"Error deleting the file '{file_path}': {e}")
-
-
-# In[19]:
-
-
-# folder_path = '/home/ubuntu/youtube/islamicVideo/'
-# files = os.listdir(folder_path)
-# if files:
-#     # Select a random file
-#     random_file_name = random.choice(files)
-#     video_file_path = os.path.join(folder_path, random_file_name)
-# else:
-#     sys.exit()
-
-
-# In[38]:
-
-
-df=pd.read_csv("instagram/islamicShorts.csv")
-
-
-# In[ ]:
+df=pd.read_csv("instagram/Shorts.csv")
 
 
 video_file_path = df["path"][0]
 
-
-# In[20]:
 
 
 try:
@@ -112,21 +63,11 @@ except Exception as e:
     print(e)
 
 
-# In[21]:
+caption = caption
 
 
-caption = """Follow & support 
-#IslamicQuotes #Inspiration #Faith #Resilience #Gratitude #IslamicWisdom #Spirituality #IslamicInsights"""
-
-
-# In[25]:
-
-
-ig_user_id = "17841465397818189"
-access_token = "EAAObxuixsnIBOxZBPdE4plUc2yZB6H4QKhmZAykLLV9pjOdkqnnSu9oWMQuAQMtDboN01tap2JO8yadZB70Vg11zjGZAAFOM9W2j9SOQNSfcIwpOMT2Pdv2cVumUtuWKfREAHimbZB5ZAXcYf7gZCNWgU4WBfWrXpsIFbVvp1LBUORTQhpoTZCrkZAlZC3k"
-
-
-# In[26]:
+ig_user_id = ig_user_id
+access_token = access_token
 
 
 result = upload_video(video_url,access_token,ig_user_id,caption)
@@ -134,25 +75,12 @@ creation_id = result["id"]
 time.sleep(60)
 
 
-# In[27]:
-
 
 upload_video_to_instagram(creation_id,access_token, ig_user_id)
 
 
-# In[ ]:
 
-
-df[1:].to_csv("instagram/islamicShorts.csv",index=False)
-
-
-# In[28]:
-
-
-# delete_file(video_file_path)
-
-
-# In[33]:
+df[1:].to_csv("instagram/Shorts.csv",index=False)
 
 
 print(f"Execution ended at {pendulum.now().to_datetime_string()}")
