@@ -48,7 +48,7 @@ def upload_file_to_0x0st(file_path):
         raise Exception("Failed to upload file")
 
 
-
+# All files path and its caption
 df=pd.read_csv("instagram/Shorts.csv")
 
 
